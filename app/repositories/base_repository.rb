@@ -1,3 +1,5 @@
+require 'csv'
+
 class BaseRepository
   def initialize(csv_file)
     @csv_file = csv_file

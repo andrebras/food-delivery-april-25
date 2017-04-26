@@ -1,0 +1,4 @@
+id,username,password,role
+1,jack,secret,manager
+2,paul,secret,manager
+3,bob,secret,delivery_guy

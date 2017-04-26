@@ -13,11 +13,14 @@ class MealsController
   end
 
   def create
-    # have view ask for name and price
-    meal_attributes = @meal_view.ask_for_meal_attributes
+    # have view ask for name
+    name = @meal_view.ask_for(:name)
+
+    # have view ask for price
+    price = @meal_view.ask_for(:price)
 
     # create a new meal instance
-    meal = Meal.new(meal_attributes)
+    meal = Meal.new(name: name, price: price)
 
     # add meal to the repo
     @meal_repo.add(meal)

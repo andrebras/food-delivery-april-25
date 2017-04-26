@@ -4,9 +4,9 @@ class BaseRepository
   def initialize(csv_file)
     @csv_file = csv_file
     @elements = []
-    @next_id = 1
 
     load_csv
+    read_next_id
   end
 
   def all
@@ -22,13 +22,24 @@ class BaseRepository
 
   private
 
+  def read_next_id
+    # Read next id from file. E.g. 'meals.csv.id'
+    @next_id = File.open("#{@csv_file}.id").read.to_i
+  end
+
   def write_csv
     CSV.open(@csv_file, 'w') do |row|
+      # Write first row to csv file (headers)
       row << build_row_header
+
+      # 'Convert' each element to an array of values and write to file
       @elements.each do |element|
         row << build_row(element)
       end
     end
+
+    # Save next id to file
+    File.open("#{@csv_file}.id", "w") { |f| f.write(@next_id) }
   end
 
   def load_csv
@@ -36,7 +47,6 @@ class BaseRepository
 
     csv_options = { headers: :first_row, header_converters: :symbol }
     CSV.foreach(@csv_file, csv_options) do |row|
-      @next_id += 1
       @elements << build_instance(row)
     end
   end

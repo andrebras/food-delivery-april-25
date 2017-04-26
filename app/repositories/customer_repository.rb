@@ -1,3 +1,5 @@
+require_relative 'base_repository'
+
 class CustomerRepository < BaseRepository
   def build_row_header
     ['id', 'name', 'address']

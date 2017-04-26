@@ -41,14 +41,14 @@ class Router
 
   def display_manager_options
     puts '1 - List Meals'
-    puts '2 - Add Meals'
+    puts '2 - Add Meal'
     puts '3 - Exit Program'
     print '> '
   end
 
   def display_delivery_guy_options
     puts '1 - List my orders'
-    puts '2 - Mark as delivered'
+    puts '2 - Mark order as delivered'
     puts '3 - Exit Program'
     print '> '
   end

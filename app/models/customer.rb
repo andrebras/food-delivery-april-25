@@ -1,11 +1,11 @@
 require_relative 'base'
 
-class Meal < Base
-  attr_reader :name, :price
+class Customer < Base
+  attr_reader :name, :address
 
   def initialize(attributes = {})
     super(attributes)
     @name = attributes[:name]
-    @price = attributes[:price]
+    @address = attributes[:address]
   end
 end
